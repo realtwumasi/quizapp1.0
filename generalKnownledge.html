@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question and Answer Game</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container">
+    
+    <div class="container1">
+    <div id="score-container">
+        <div>Score: <span id="score">0</span></div>
+        <button id="reset" class="reset-butt">Reset</button>
+    </div>
+    <div id="question-container" class="mama"></div>
+    <input type="text" id="user-answer" placeholder="Your answer">
+
+<div class="buttons1">
+    <button id="submit-answer">Submit</button>
+    <button id="next-question">Next Question</button>
+    <button class="button1 butt" onclick="readQuestion()">&#128266;</button>
+    
+    <a href="startTopics.html"><button>Back</button></a>
+</div>
+    <div id="feedback"></div>
+    
+</div>
+</div>
+
+    <script src="generalKnown.js">
+    </script>
+        <script src="theme.js"></script>
+        <script>
+            function readQuestion() {
+              // Get the text to be read
+              const question = document.getElementById('question-container').textContent;
+        
+              // Create a new SpeechSynthesisUtterance object
+              const utterance = new SpeechSynthesisUtterance(question);
+        
+              // Optionally, configure voice, pitch, rate, and volume
+              utterance.voice = speechSynthesis.getVoices()[0]; // Use the default voice
+              utterance.pitch = 1; // Range: 0 to 2
+              utterance.rate = 1;  // Range: 0.1 to 10
+              utterance.volume = 1; // Range: 0 to 1
+        
+              // Speak the text
+              speechSynthesis.speak(utterance);
+            }
+         </script>
+
+</body>
+</html>

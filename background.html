@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>background Colour</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container">
+  <div class="container1">
+    <div class="buttons">
+    <button class="button1" id="lightTheme" style="background-color: #03624c; color: #fff;">#03624c</button>
+    <button class="button1"id="darkTheme" style="background-color: #191bdf; color: #fff;">#191bdf</button>
+    <button class="button1"id="blueTheme" style="background-color: #fe6807;color: #fff;">#fe6807</button>
+    <button class="button1" id="greenTheme" style="background-color: #85d5c8;">#85d5c8</button>
+    <button class="button1" id="normalTheme" style="background-color: #ffffff; color: #000;">Normal</button>
+    <a href="index.html"><button>Back to home</button></a>
+  </div>
+  </div>
+</div>
+  <script>
+    const lightTheme = document.getElementById("lightTheme");
+    const darkTheme = document.getElementById("darkTheme");
+    const blueTheme = document.getElementById("blueTheme");
+    const greenTheme = document.getElementById("greenTheme");
+    const normalTheme = document.getElementById("normalTheme");
+
+    // Function to apply a theme
+    const applyTheme = (theme) => {
+      document.body.className = theme;
+      localStorage.setItem("selectedTheme", theme); // Save to localStorage
+    };
+
+    // Event listeners for buttons
+    lightTheme.addEventListener("click", () => applyTheme("light-theme"));
+    darkTheme.addEventListener("click", () => applyTheme("dark-theme"));
+    blueTheme.addEventListener("click", () => applyTheme("blue-theme"));
+    greenTheme.addEventListener("click", () => applyTheme("green-theme"));
+    normalTheme.addEventListener("click", () => applyTheme("normal-theme"));
+
+    // On page load, apply the saved theme (if it exists)
+    const savedTheme = localStorage.getItem("selectedTheme");
+    if (savedTheme) {
+      document.body.className = savedTheme;
+    } else {
+      document.body.className = "light-theme"; // Default theme
+    }
+  </script>
+  <script src="theme.js"></script>
+</body>
+</html>
